@@ -27,3 +27,69 @@ sudo apt install gnome-tweaks -y
 - Clock :
   - Date : ON
   - Second : ON
+
+# Apple Color Emoji on Linux
+1. Download font.
+Check https://github.com/samuelngs/apple-emoji-linux/releases to get a link to the latest `AppleColorEmoji.ttf`
+```bash
+mkdir ~/.local/share/fonts/
+wget https://github.com/samuelngs/apple-emoji-linux/releases/download/ios-15.4/AppleColorEmoji.ttf -O ~/.local/share/fonts/AppleColorEmoji.ttf
+# or system-wide to /usr/share/fonts/AppleColorEmoji/, for example
+```
+
+2. Put Apple Color Emoji on 1st place in `/etc/fonts/conf.d/60-generic.conf`:
+```xml
+...
+	<alias binding="same">
+		<family>emoji</family>
+		<prefer>
+			<family>Apple Color Emoji</family> <!-- Added -->
+			<!-- System fonts -->
+			<family>Noto Color Emoji</family> <!-- Google -->
+			<family>Apple Color Emoji</family> <!-- Apple -->
+			<family>Segoe UI Emoji</family> <!-- Microsoft -->
+			<family>Twitter Color Emoji</family> <!-- Twitter -->
+			<family>EmojiOne Mozilla</family> <!-- Mozilla -->
+			<!-- Third-Party fonts -->
+			<family>Emoji Two</family>
+			<family>Emoji One</family>
+			<!-- Non-color -->
+			<family>Noto Emoji</family> <!-- Google -->
+			<family>Android Emoji</family> <!-- Google -->
+		</prefer>
+	</alias>
+...
+```
+3. Create font config:	
+```bash	
+mkdir ~/.config/fontconfig/	
+tee ~/.config/fontconfig/fonts.conf << FONTS	
+<?xml version="1.0" encoding="UTF-8"?>	
+<!DOCTYPE fontconfig SYSTEM "fonts.dtd">	
+<fontconfig>	
+  <alias>	
+    <family>serif</family>	
+    <prefer>	
+      <family>Apple Color Emoji</family>	
+    </prefer>	
+  </alias>	
+  <alias>	
+    <family>sans-serif</family>	
+    <prefer>	
+      <family>Apple Color Emoji</family>	
+    </prefer>	
+  </alias>	
+  <alias>	
+    <family>monospace</family>	
+    <prefer>	
+      <family>Apple Color Emoji</family>	
+    </prefer>	
+  </alias>	
+  <match target="pattern">	
+    <test qual="any" name="family"><string>Noto Color Emoji</string></test>	
+    <edit name="family" mode="assign" binding="same"><string>Apple Color Emoji</string></edit>	
+  </match>	
+</fontconfig>
+```
+4. Clear font cache:
+`fc-cache -f -v`

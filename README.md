@@ -31,13 +31,11 @@ sudo apt install gnome-tweaks -y
 # Apple Color Emoji on Linux
 1. Download font.
 Check https://github.com/samuelngs/apple-emoji-linux/releases to get a link to the latest `AppleColorEmoji.ttf`
-```bash
-mkdir ~/.local/share/fonts/
-wget https://github.com/samuelngs/apple-emoji-linux/releases/download/ios-15.4/AppleColorEmoji.ttf -O ~/.local/share/fonts/AppleColorEmoji.ttf
-# or system-wide to /usr/share/fonts/AppleColorEmoji/, for example
-```
 
-2. Put Apple Color Emoji on 1st place in `/etc/fonts/conf.d/60-generic.conf`:
+2. Put Apple Color Emoji on 1st place in 
+```sh 
+nano /etc/fonts/conf.d/60-generic.conf
+```
 ```xml
 ...
 	<alias binding="same">
@@ -63,7 +61,9 @@ wget https://github.com/samuelngs/apple-emoji-linux/releases/download/ios-15.4/A
 3. Create font config:	
 ```bash	
 mkdir ~/.config/fontconfig/	
-tee ~/.config/fontconfig/fonts.conf << FONTS	
+nano ~/.config/fontconfig/fonts.conf
+```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>	
 <!DOCTYPE fontconfig SYSTEM "fonts.dtd">	
 <fontconfig>	
@@ -92,4 +92,6 @@ tee ~/.config/fontconfig/fonts.conf << FONTS
 </fontconfig>
 ```
 4. Clear font cache:
-`fc-cache -f -v`
+```sh
+fc-cache -f -v
+```

@@ -9,6 +9,17 @@ $ sudo apt install zsh
 https://itsfoss.com/zsh-ubuntu/
 
 - Setup Oh my Zsh :
+...
+
+## Fonts :
+SF Pro
+```
+https://github.com/sahibjotsaggu/San-Francisco-Pro-Fonts/
+```
+SF Mono
+```
+https://github.com/supercomputra/SF-Mono-Font/
+```
 ## Gnome Tweaks :
 ```sh
 sudo apt install gnome-tweaks -y
@@ -95,3 +106,28 @@ nano ~/.config/fontconfig/fonts.conf
 ```sh
 fc-cache -f -v
 ```
+## Gooogle Chrome
+```
+chrome://settings/fonts
+```
+
+### Font size : 
+	`Tiny---(16)-------Huge`
+
+### Minimum font size :
+	`Tiny----(12)----Huge`
+
+### Standard font: 
+	`SF Pro Text 16`
+
+### Serif font:
+	`SF Pro Text 16`
+
+### Sans-serif font:
+	`SF Pro Text 16`
+
+### Fixed-width font:
+	`SF Mono 13`
+
+### Mathematical font:
+	`SF Pro Text 16`

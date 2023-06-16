@@ -4,7 +4,8 @@
 ## Terminal :
 - Install Zsh
 ```sh
-$ sudo apt install zsh
+sudo apt install zsh
+zsh --version
 ```
 https://itsfoss.com/zsh-ubuntu/
 

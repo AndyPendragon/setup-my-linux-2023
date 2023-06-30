@@ -11,7 +11,14 @@ https://itsfoss.com/zsh-ubuntu/
 
 - Setup Oh my Zsh :
 ...
-
+## Remap my keyboard :
+```
+xev
+// to know the keycode
+//...
+xmodmap -e "keycode  97 = less greater less greater bar brokenbar bar brokenbar"
+// remap keycode to this value
+```
 ## Fonts :
 SF Pro
 ```
